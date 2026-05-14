@@ -1,0 +1,41 @@
+app_name: predictive-cyberattack-demo
+mode: demo
+master: local[*]
+enable_hive: false
+
+paths:
+  raw_csv: data/sample/unsw_sample.csv
+  model_input: data/processed/model_input
+  pca_data: data/processed/pca
+  preprocessing_pipeline: models/preprocessing_pipeline
+  metrics_dir: reports/metrics
+  models_dir: models
+  scored_predictions: reports/scored/demo_predictions
+
+features:
+  categorical:
+    - state
+    - service
+    - attack_cat
+  numeric:
+    - dtrate
+    - sload
+    - dload
+    - sintpkt
+    - dintpkt
+    - ct_state_ttl
+    - ct_srv_dst
+    - ct_dst_ltm
+    - ct_src_ltm
+    - ct_srv_src
+    - ct_src_dport_ltm
+    - ct_dst_sport_ltm
+    - ct_dst_src_ltm
+  label: label
+  multiclass_label: attack_cat_index
+
+training:
+  seed: 25
+  train_fraction: 0.7
+  pca_components: 5
+  sample_majority_class: false

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "predictive-cyberattack"
+version = "0.1.0"
+description = "Big-data network intrusion detection pipeline using Hadoop, Hive, and PySpark."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pyspark>=3.5",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+pc-prepare-features = "predictive_cyberattack.pipelines.run_feature_pipeline:main"
+pc-train = "predictive_cyberattack.pipelines.run_training_pipeline:main"
+pc-score = "predictive_cyberattack.pipelines.run_scoring_pipeline:main"
+pc-check-env = "predictive_cyberattack.pipelines.check_environment:main"

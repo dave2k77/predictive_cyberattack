@@ -1,0 +1,22 @@
+name: UNSW-NB15 full CSV shards
+source: zenodo
+doi: 10.5281/zenodo.10140548
+landing_page: https://zenodo.org/records/10140548
+official_reference: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+files:
+  - name: UNSW-NB15_1.csv
+    url: https://zenodo.org/records/10140548/files/UNSW-NB15_1.csv?download=1
+    md5: 560dcc5981b3f6ab98027a16b053c9c1
+    size_mb: 169.0
+  - name: UNSW-NB15_2.csv
+    url: https://zenodo.org/records/10140548/files/UNSW-NB15_2.csv?download=1
+    md5: 59215357fbed7c76efc6a404a8607688
+    size_mb: 165.2
+  - name: UNSW-NB15_3.csv
+    url: https://zenodo.org/records/10140548/files/UNSW-NB15_3.csv?download=1
+    md5: 75e8567341edb760a23f803b920b69d4
+    size_mb: 154.6
+  - name: UNSW-NB15_4.csv
+    url: https://zenodo.org/records/10140548/files/UNSW-NB15_4.csv?download=1
+    md5: f55875cab7f037fdad40b5b737e7db5e
+    size_mb: 97.6

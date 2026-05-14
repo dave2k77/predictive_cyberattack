@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${1:-}" != "dfs" ]]; then
+  echo "This project-local Hadoop wrapper currently supports only: hdfs dfs ..." >&2
+  exit 2
+fi
+shift
+
+PYTHON_BIN="${PYTHON:-python3}"
+PYSPARK_JARS="$("$PYTHON_BIN" - <<'PY'
+import os
+import pyspark
+
+print(os.path.join(os.path.dirname(pyspark.__file__), "jars", "*"))
+PY
+)"
+
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+HADOOP_CONF_DIR="${HADOOP_CONF_DIR:-$PROJECT_ROOT/configs/hadoop}"
+
+exec java ${HADOOP_CLIENT_OPTS:-} -cp "$HADOOP_CONF_DIR:$PYSPARK_JARS" org.apache.hadoop.fs.FsShell "$@"

@@ -1,0 +1,45 @@
+app_name: predictive-cyberattack-hadoop
+mode: hadoop
+master: null
+enable_hive: true
+
+database: unsw
+
+paths:
+  raw_hdfs: hdfs://localhost:9000/data/unsw/raw/
+  source_table: unsw.model_input_features
+  cleaned_table: unsw.unsw_network_data_cleaned
+  model_input: hdfs://localhost:9000/data/unsw/features/model_input
+  pca_data: hdfs://localhost:9000/data/unsw/features/pca
+  preprocessing_pipeline: hdfs://localhost:9000/models/unsw/preprocessing_pipeline
+  metrics_dir: reports/metrics
+  models_dir: hdfs://localhost:9000/models/unsw
+  scored_predictions: hdfs://localhost:9000/data/unsw/predictions/latest
+
+features:
+  categorical:
+    - state
+    - service
+    - attack_cat
+  numeric:
+    - dtrate
+    - sload
+    - dload
+    - sintpkt
+    - dintpkt
+    - ct_state_ttl
+    - ct_srv_dst
+    - ct_dst_ltm
+    - ct_src_ltm
+    - ct_srv_src
+    - ct_src_dport_ltm
+    - ct_dst_sport_ltm
+    - ct_dst_src_ltm
+  label: label
+  multiclass_label: attack_cat_index
+
+training:
+  seed: 25
+  train_fraction: 0.7
+  pca_components: 5
+  sample_majority_class: true

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.runtime/
+.tools/
+downloads/
+derby.log
+metastore_db/
+
+# Data and generated artifacts
+data/raw/
+data/interim/
+data/processed/
+models/*
+!models/.gitkeep
+reports/metrics/*
+!reports/metrics/.gitkeep
+reports/scored/
+reports/figures/*
+!reports/figures/.gitkeep
